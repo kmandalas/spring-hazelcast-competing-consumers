@@ -29,3 +29,6 @@ target/
 
 ### java version ###
 .java-version
+
+### other ###
+/data/
