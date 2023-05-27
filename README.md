@@ -1,4 +1,5 @@
-# Competing Consumers pattern with Spring Boot and Hazelcast Demo project
+# Competing Consumers pattern with Spring Boot and Hazelcast
+Codebase for the article post [Competing Consumers with Spring Boot and Hazelcast](https://dzone.com/articles/Competing-Consumers-with-Spring-Boot-and-Hazelcast)
 
 ## Tech-stack
 - Spring Boot version: 3.1.1-SNAPSHOT
