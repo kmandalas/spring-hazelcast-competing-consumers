@@ -7,11 +7,10 @@ import dev.kmandalas.common.domain.Event;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 
 @Slf4j
-@Component
+// @Component
 public class EventItemListener implements ItemListener<Event> {
 
     private final IQueue<Event> queue;

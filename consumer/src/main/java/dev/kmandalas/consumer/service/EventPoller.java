@@ -5,7 +5,6 @@ import dev.kmandalas.common.domain.Event;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -20,7 +19,7 @@ public class EventPoller {
         this.demoService = demoService;
     }
 
-    @Scheduled(fixedRate = 5000)
+    // @Scheduled(fixedRate = 5000)
     @SneakyThrows
     public void consume() {
         Event event = queue.poll();
