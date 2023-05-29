@@ -4,9 +4,9 @@ Codebase for the article post [Competing Consumers with Spring Boot and Hazelcas
 ## Tech-stack
 - Spring Boot version: 3.1.1-SNAPSHOT
 - Hazelcast version: 5.2.1
-- Java version: 20 (need `--enable-preview` for Virtual Threads)
+- Java version: 20 (needs `--enable-preview` for Virtual Threads)
 - Build tool: Maven
-- Docker 
+- Docker with Compose
 
 ## References
 - https://www.enterpriseintegrationpatterns.com/patterns/messaging/CompetingConsumers.html
