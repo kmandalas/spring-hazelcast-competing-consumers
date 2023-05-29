@@ -5,6 +5,7 @@ import dev.kmandalas.common.domain.Event;
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.togglz.core.Feature;
 import org.togglz.core.manager.FeatureManager;
@@ -14,10 +15,15 @@ import org.togglz.core.util.NamedFeature;
 @Slf4j
 public class EventConsumer {
 
+    @Value("${demo.virtual.threads}")
+    private int numberOfThreads = 1;
+    @Value("${demo.queue.name}")
+    private String queueName;
     private final IQueue<Event> queue;
     private final DemoService demoService;
     private final FeatureManager manager;
     public static final Feature CONSUMER_ENABLED = new NamedFeature("CONSUMER_ENABLED");
+
     public EventConsumer(@Qualifier("eventQueue") IQueue<Event> queue, DemoService demoService,
                          FeatureManager manager) {
         this.queue = queue;
@@ -31,7 +37,11 @@ public class EventConsumer {
     }
 
     public void startConsuming() {
-        Thread.ofVirtual().start(this::consumeMessages);
+        for (var i = 0; i < numberOfThreads; i++) {
+            Thread.ofVirtual()
+                    .name(queueName + "_" + "consumer-" + i)
+                    .start(this::consumeMessages);
+        }
     }
 
     private void consumeMessages() {
