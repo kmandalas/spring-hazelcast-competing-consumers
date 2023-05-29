@@ -7,6 +7,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+/**
+ * Alternative approach using a Scheduled task to poll for messages
+ */
 @Component
 @Slf4j
 public class EventPoller {

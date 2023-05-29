@@ -8,7 +8,12 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 
-
+/**
+ * Alternative approach using {@link ItemListener} to be notified when an item is added to the queue.
+ * see <a href="https://medium.com/wix-engineering/getting-started-with-hazelcast-iqueue-as-a-messaging-service-eb3fb3c14a02"/>
+ * Keep in mind that this approach will not work if consumer is down: when its started again,
+ * the "ADDED" {@link ItemEvent events} will not be sent.
+ */
 @Slf4j
 // @Component
 public class EventItemListener implements ItemListener<Event> {
