@@ -33,6 +33,7 @@ public class DemoService {
 
     @Retryable(retryFor = Exception.class, maxAttempts = 2)
     @SneakyThrows
+    // @Async: enable this if you want to delegate processing to a ThreadPoolTaskExecutor
     public void doWork(Event event) {
         // do the actual processing...
         EventProcessedEntity processed = new EventProcessedEntity();
